@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'; // Importa PropTypes desde 'prop-types'
 import estilo from './Principal.module.css'
 import Vinculo from './Vinculo';
 import Lista from '../../assets/lista.svg'
@@ -24,5 +25,10 @@ function Principal({ children }) {
     </div>
   );
 }
+
+Principal.propTypes = {
+  children: PropTypes.node, // Validación para la prop 'children'
+};
+
 
 export default Principal;

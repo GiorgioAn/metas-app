@@ -1,0 +1,27 @@
+.metaContainer {
+    @apply flex p-2 justify-between;
+}
+
+.leftMetaContainer {
+    @apply flex items-center;
+}
+
+.metaIcono {
+    @apply h-10 w-10 nm-inset-gray-100 rounded-full flex items-center justify-center text-xl;
+}
+
+/* .metaFrecuencia {
+    @apply ml-5 flex flex-col items-start;
+} */
+
+.rightMetaContainer {
+    @apply flex;
+}
+
+.barra1 {
+    @apply nm-convex-gray-100 h-1 w-28 rounded bg-blue-200;
+}
+
+.barra2 {
+    @apply h-1 rounded bg-gradient-to-l from-green-200 to-blue-500;
+}

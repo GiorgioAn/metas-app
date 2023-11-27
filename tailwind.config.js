@@ -15,7 +15,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line no-undef
+  plugins: [require('tailwindcss-neumorphism')],
   // Agrega la configuración JIT
   jit: true,
   // Actualiza la configuración de purga
