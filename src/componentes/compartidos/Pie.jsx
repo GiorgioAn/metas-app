@@ -1,4 +1,4 @@
-import estilo from './Pie.module.css'
+import estilo from './Pie.module.css';
 
 function Pie() {
     return (

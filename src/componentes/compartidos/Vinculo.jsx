@@ -1,4 +1,4 @@
-import estilo from './Vinculo.module.css'
+import estilo from './Vinculo.module.css';
 
 function Vinculo({ Icono, alt, texto, href }) {
     return (

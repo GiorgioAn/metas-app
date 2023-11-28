@@ -1,6 +1,6 @@
-import estilo from './Encabezado.module.css'
-import Logo from '../../assets/logo.svg'
-import Perfil from '../../assets/perfil.svg'
+import estilo from './Encabezado.module.css';
+import Logo from '../../assets/logo.svg';
+import Perfil from '../../assets/perfil.svg';
 import Vinculo from './Vinculo';
 
 

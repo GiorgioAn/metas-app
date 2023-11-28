@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'; // Importa PropTypes desde 'prop-types'
-import estilo from './Principal.module.css'
+import estilo from './Principal.module.css';
 import Vinculo from './Vinculo';
-import Lista from '../../assets/lista.svg'
-import Nueva from '../../assets/nueva.svg'
+import Lista from '../../assets/lista.svg';
+import Nueva from '../../assets/nueva.svg';
 
 function Principal({ children }) {
   return (

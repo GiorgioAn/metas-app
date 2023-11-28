@@ -24,7 +24,7 @@ const listaMock = [{
 
 function Lista () {
     return ( 
-        listaMock.map(meta => <Meta {...meta}></Meta>)
+        listaMock.map(meta => <Meta key={meta} {...meta}></Meta>)
      );
 }
 
