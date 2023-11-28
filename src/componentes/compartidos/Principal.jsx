@@ -14,7 +14,7 @@ function Principal({ children }) {
           Icono={Lista}
           alt="Icono de lista de metas" />
         <Vinculo
-          href="/meta"
+          href="/nueva"
           texto="Nueva meta"
           Icono={Nueva} 
           alt="Icono de meta nueva"/>

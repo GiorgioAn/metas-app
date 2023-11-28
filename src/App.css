@@ -3,7 +3,7 @@
 }
 
 .tarjeta {
-  @apply rounded-xl m-2 text-gray-700 text-xs mx-4 nm-flat-white;
+  @apply rounded-xl m-4 text-gray-700 text-xs mx-4 nm-flat-white;
 }
 
 .boton {

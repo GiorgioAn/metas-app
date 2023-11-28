@@ -1,19 +1,6 @@
 import estilo from './Meta.module.css';
 
-const metaMock = {
-    "id": "1",
-    "detalles": "Correr por 30 minutos",
-    "periodo": "día",
-    "eventos": "1",
-    "icono": "🏃🏽‍♂️",
-    "meta": "365",
-    "plazo": "2030-01-01",
-    "completado": 150
-}
-
-function Meta() {
-
-    const { icono, eventos, periodo, detalles, meta, completado } = metaMock;
+function Meta({ icono, eventos, periodo, detalles, meta, completado }) {
 
     return (
         <div className={estilo.metaContainer + " tarjeta"} >
