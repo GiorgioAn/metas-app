@@ -9,12 +9,12 @@ function Principal({ children }) {
     <div className={estilo.bodyContainer}>
       <aside className={estilo.asideContainer}>
         <Vinculo
-          href="/lista_de_metas"
+          to="/lista"
           texto="Lista de metas"
           Icono={Lista}
           alt="Icono de lista de metas" />
         <Vinculo
-          href="/nueva"
+          to="/nueva"
           texto="Nueva meta"
           Icono={Nueva} 
           alt="Icono de meta nueva"/>

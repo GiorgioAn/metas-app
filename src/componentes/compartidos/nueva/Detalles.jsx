@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Contexto } from '../../../servicios/Memoria';
 import estilo from './Detalles.module.css';
 
 function Detalles() {
@@ -12,7 +13,9 @@ function Detalles() {
         meta: 100,
         plazo: '28-03-2025',
         completado: 1,
-    })
+    });
+
+    const [estado, enviar] = useContext(Contexto);
 
     const { detalles, eventos, periodo, icono, meta, plazo, completado } = form;
 
@@ -24,12 +27,15 @@ function Detalles() {
         /* console.log(form); */
     }, [form]);
 
+    const navegar = useNavigate(Contexto);
+
     const crear = async () => {
-        console.log(form);
+        enviar({ tipo: 'crear', meta: form });
+        navegar('/lista');
     }
 
     const frecuencia = ["día", "semana", "mes", "años"];
-    const emoji = ["⛷️", "🏄🏽‍♂️", "📖", "⚽", "🛩️"];
+    const emoji = ["⛷️", "🏄🏽‍♂️", "📖", "⚽", "🛩️", "💞"];
 
     return (
         <div className="tarjeta">
@@ -105,9 +111,9 @@ function Detalles() {
             <div className={estilo.contenedorBotones}>
                 <button
                     className="boton boton--negro"
-                    onClick={crear}
-                >
-                    Crear</button>
+                    onClick={crear}>
+                    Crear
+                </button>
                 <button className="boton boton--gris">Cancelar</button>
             </div>
         </div>

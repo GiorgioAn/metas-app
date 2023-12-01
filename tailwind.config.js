@@ -19,12 +19,4 @@ export default {
   plugins: [require('tailwindcss-neumorphism')],
   // Agrega la configuración JIT
   jit: true,
-  // Actualiza la configuración de purga
-  purge: {
-    content: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    safelist: [],
-  },
 }
