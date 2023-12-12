@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types';
 import { createContext, useReducer } from "react";
-
 /* const listaMock = [
   {
     id: "1",
@@ -83,6 +83,8 @@ function reductor(estado, accion) {
       localStorage.setItem('metas', JSON.stringify(nuevoEstado))
       return nuevoEstado;
     }
+    default:
+      throw new Error();
   }
 }
 
@@ -98,3 +100,7 @@ function Memoria({ children }) {
 }
 
 export default Memoria;
+
+Memoria.propTypes = {
+  children: PropTypes.node, // Validación para la prop 'children'
+};

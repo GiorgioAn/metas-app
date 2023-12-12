@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Contexto } from "../../../servicios/Memoria";
@@ -12,7 +13,7 @@ function Detalles() {
     periodo: "año",
     icono: "🏄🏽‍♂️",
     meta: 100,
-    plazo: "28-03-2025",
+    plazo: "2025-12-25",
     completado: 1,
   });
 
@@ -24,14 +25,15 @@ function Detalles() {
     setForm((estado) => ({ ...estado, [prop]: event.target.value }));
   };
 
+  const metaMemoria = estado.objetos[id];
+  
   useEffect(() => {
-    const metaMemoria = estado.objetos[id];
     if (!id) return;
     if (!metaMemoria) {
       return navegar("/404");
     }
     setForm(estado.objetos[id]);
-  }, [id]);
+  }, [id, metaMemoria]);
 
   const navegar = useNavigate(Contexto);
 
