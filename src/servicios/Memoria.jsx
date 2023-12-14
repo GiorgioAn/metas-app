@@ -1,65 +1,51 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { createContext, useReducer } from "react";
-/* const listaMock = [
-  {
-    id: "1",
-    detalles: "Correr por 30 minutos",
-    periodo: "día",
-    eventos: "1",
-    icono: "🏃🏽‍♂️",
-    meta: "365",
-    plazo: "2030-01-01",
-    completado: 250,
-  },
-  {
-    id: "2",
-    detalles: "Surfear",
-    periodo: "Semana",
-    eventos: "1",
-    icono: "🏄🏽‍♂️",
-    meta: "100",
-    plazo: "2030-01-01",
-    completado: 3,
-  },
-  {
-    id: "3",
-    detalles: "Hacer el amor",
-    periodo: "día",
-    eventos: "1",
-    icono: "💞",
-    meta: "250",
-    plazo: "2030-01-01",
-    completado: 30,
-  },
-]; */
 
-const memoria = localStorage.getItem('metas');
-const estadoInicial = memoria
+// const memoria = localStorage.getItem('metas');
+
+const estadoInicial = {
+  orden: [],
+  objetos: {},
+};
+
+/* const estadoInicial = memoria
   ? JSON.parse(memoria): {
       orden: [],
       objetos: {},
-    };
+    }; */
 
 function reductor(estado, accion) {
   switch (accion.tipo) {
     case "colocar": {
       const metas = accion.metas;
-      const nuevoEstado = {
+      /* const nuevoEstado = {
         orden: metas.map((meta) => meta.id),
-        objetos: metas.reduce((objeto, meta) => ({ ...objeto, [meta.id]: meta }),
+        objetos: metas.reduce(
+          (objeto, meta) => ({ ...objeto, [meta.id]: meta }),
           {}
         ),
       };
-      localStorage.setItem('metas', JSON.stringify(nuevoEstado))
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado))
+      return nuevoEstado;
+    } */
+    const metasArray = Array.isArray(metas) ? metas : [];
+      const nuevoEstado = {
+        orden: metasArray.map((meta) => meta.id),
+        objetos: metasArray.reduce(
+          (objeto, meta) => ({ ...objeto, [meta.id]: meta }),
+          {}
+        ),
+      };
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado))
       return nuevoEstado;
     }
     case "crear": {
-      const id = estado.orden.length + 1; //accion.meta.id;
+      const id = accion.meta.id; //estado.orden.length + 1;
       const nuevoEstado = {
         orden: [...estado.orden, id],
         objetos: { ...estado.objetos, [id]: { id, ...accion.meta } },
       };
-      localStorage.setItem('metas', JSON.stringify(nuevoEstado))
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado))
       return nuevoEstado;
     }
     case "actualizar": {
@@ -69,7 +55,7 @@ function reductor(estado, accion) {
         ...accion.meta,
       };
       const nuevoEstado = { ...estado };
-      localStorage.setItem('metas', JSON.stringify(nuevoEstado))
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado))
       return nuevoEstado;
     }
     case "borrar": {
@@ -80,7 +66,7 @@ function reductor(estado, accion) {
         orden: nuevoOrden,
         objetos: estado.objetos,
       };
-      localStorage.setItem('metas', JSON.stringify(nuevoEstado))
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado))
       return nuevoEstado;
     }
     default:

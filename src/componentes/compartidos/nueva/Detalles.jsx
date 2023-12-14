@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Contexto } from "../../../servicios/Memoria";
 import estilo from "./Detalles.module.css";
+import { borrarMeta, crearMeta, actualizarMeta } from "../../../servicios/Pedidos";
 
 function Detalles() {
   const { id } = useParams();
@@ -25,6 +26,8 @@ function Detalles() {
     setForm((estado) => ({ ...estado, [prop]: event.target.value }));
   };
 
+  const navegar = useNavigate(Contexto);
+
   const metaMemoria = estado.objetos[id];
   
   useEffect(() => {
@@ -33,25 +36,27 @@ function Detalles() {
       return navegar("/404");
     }
     setForm(estado.objetos[id]);
-  }, [id, metaMemoria]);
+  }, [id, metaMemoria, navegar]);
 
-  const navegar = useNavigate(Contexto);
 
   /* INVOCACION PARA LA FUNCION EN EL REDUCTOR "Memroia.jsx" PARA LA ACCION CREAR */
-  const crear = () => {
-    enviar({ tipo: "crear", meta: form });
+  const crear = async () => {
+    const nuevaMeta = await crearMeta()
+    enviar({ tipo: "crear", meta: nuevaMeta });
     navegar("/lista");
   };
 
   /* INVOCACION PARA LA FUNCION EN EL REDUCTOR "Memroia.jsx" PARA LA ACCION ACTUALIZAR */
-  const actualizar = () => {
-    enviar({ tipo: "actualizar", meta: form });
+  const actualizar = async () => {
+    const metaActualizada = await actualizarMeta();
+    enviar({ tipo: "actualizar", meta: metaActualizada });
     navegar("/lista");
   };
 
   /* INVOCACION PARA LA FUNCION EN EL REDUCTOR "Memroia.jsx" PARA LA ACCION BORRAR */
-  const borrar = () => {
-    enviar({ tipo: "borrar", id });
+  const borrar = async () => {
+    const idBorrada = await borrarMeta();
+    enviar({ tipo: "borrar", id: idBorrada });
     navegar("/lista");
   };
 
